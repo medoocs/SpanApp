@@ -31,8 +31,8 @@ export class AppComponent implements OnInit{
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
       },
-      error:()=>{
-        alert("Error while loading data!")
+      error:(e)=>{
+        alert(e.error);
       }
     })
   }
@@ -41,12 +41,12 @@ export class AppComponent implements OnInit{
     this.api.addPersonCsv()
     .subscribe({
       next:(res)=>{
-        alert("CSV added successfully!")
+        alert("CSV added successfully!");
+        window.location.reload();
       },
-      error:()=>{
-        alert("Error while saving data!")
+      error:(e)=>{
+        alert(e.error);
       }
     })
-    window.location.reload();
   }
 }
